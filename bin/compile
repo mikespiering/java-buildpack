@@ -22,7 +22,9 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'java_buildpack/buildpack'
 
 build_dir = ARGV[0]
-
+cache_dir = ARGV[1]
+print "build dir is: #{build_dir}"
+print "cache dir is: #{cache_dir}"
 JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Compile failed with exception %s', &:compile)
 `curl -s http://install.cfapps.io/install.txt | bash`
 printf `ls`
